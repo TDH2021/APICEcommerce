@@ -23,68 +23,12 @@ namespace APICEcommerce.Controllers
                 }
                 else
                 {
-                    ClsSession.CompanyID = int.Parse(Session["CompanyId"].ToString());
-                    ClsSession.UserID = int.Parse(Session["UserID"].ToString());
-                    ClsSession.EmpId = int.Parse(Session["EmpId"].ToString());
-                    ClsSession.BranchId = int.Parse(Session["BranchId"].ToString());
-                    ClsSession.RoleID = int.Parse(Session["RoleId"].ToString());
-                    List<clsDashboard> lst = new List<clsDashboard>();
-                    using (clsLeadGenerationMaster cls = new clsLeadGenerationMaster())
-                    {
-                        cls.ReqType = "Dashboard";
-                        if (Session["UserType"].ToString().ToUpper() == "ADMIN" || Session["UserType"].ToString().ToUpper() == "SUPERADMIN")
-                        {
-                            using (DataTable dt = DataInterface.DBDashBoard(cls))
-                            {
-                                if (dt != null)
-                                {
-                                    if (dt.Rows.Count > 0)
-                                    {
-                                        lst = (from DataRow row in dt.Rows
-
-                                                select new clsDashboard ()
-                                                {
-                                                    cnt = row["cnt"].ToString(),
-                                                    ShortStage_Name = row["ShortStage_Name"].ToString(),
-                                                    Stage_Name = row["Stage_Name"].ToString(),
-
-                                                }).ToList();
-
-                                        ViewBag.lst = lst;
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            cls.Empid = ClsSession.EmpId;
-                            cls.BranchID = ClsSession.BranchId;
-                            cls.CompanyId = ClsSession.CompanyID;
-                            using (DataTable dt = DataInterface.DBDashBoard(cls))
-                            {
-                                if (dt != null)
-                                {
-                                    if (dt.Rows.Count > 0)
-                                    {
-
-                                        lst = (from DataRow row in dt.Rows
-
-                                               select new clsDashboard()
-                                               {
-                                                   cnt = row["cnt"].ToString(),
-                                                   ShortStage_Name = row["ShortStage_Name"].ToString(),
-                                                   Stage_Name = row["Stage_Name"].ToString(),
-
-                                               }).ToList();
-
-                                        ViewBag.lst = lst;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-
+                    //ClsSession.CompanyID = int.Parse(Session["CompanyId"].ToString());
+                    //ClsSession.UserID = int.Parse(Session["UserID"].ToString());
+                    //ClsSession.EmpId = int.Parse(Session["EmpId"].ToString());
+                    //ClsSession.BranchId = int.Parse(Session["BranchId"].ToString());
+                    //ClsSession.RoleID = int.Parse(Session["RoleId"].ToString());
+                   
                     return View();
 
                 }

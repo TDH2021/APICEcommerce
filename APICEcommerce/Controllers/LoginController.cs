@@ -212,7 +212,8 @@ namespace APICEcommerce.Controllers
         //        }
         //    }
         //}
-        
+
+
         public int UpdateLogin(clsLogin cls)
         {
             int resut = 0;
